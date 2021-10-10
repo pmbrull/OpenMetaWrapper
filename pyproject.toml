@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [tool.flit.metadata]
-module = "openmeta-wrapper"
+module = "OpenMetaWrapper"
 author = "pmbrull"
 author-email = "peremiquelbrull@gmail.com"
 home-page = "https://github.com/pmbrull/OpenMetaWrapper"

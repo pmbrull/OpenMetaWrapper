@@ -3,11 +3,8 @@ PROJECT_DIR ?= openmeta-wrapper
 
 install:
 	@echo "Installing requirements..."
-	pip install -r requirements.txt
-
-install_test:
-	@echo "Installing test requirements..."
-	pip install -r requirements-test.txt
+	pip install flit
+	flit install --deps develop
 
 precommit_install:
 	@echo "Installing pre-commit hooks"
