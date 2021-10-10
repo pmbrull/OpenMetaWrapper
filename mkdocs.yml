@@ -1,0 +1,42 @@
+site_name: Levy
+site_url: https://pmbrull.github.io/OpenMetaWrapper/
+site_description: Supercharge YAML configs with Jinja, types and custom functions.
+
+theme:
+    name: material
+    font:
+        text: Poppins
+        code: Poppins Mono
+    palette:
+        primary: light blue
+        accent: amber
+    icon:
+        repo: fontawesome/brands/github-alt
+        logo: fontawesome/solid/fast-forward
+
+repo_name: pmbrull/OpenMetaWrapper
+repo_url: https://github.com/pmbrull/OpenMetaWrapper
+edit_uri: ""
+
+markdown_extensions:
+    - toc:
+        permalink: true
+    - pymdownx.superfences:
+        custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:pymdownx.superfences.fence_div_format
+    - pymdownx.tabbed
+
+nav:
+    - Quickstart: index.md
+    - Contributing: contributing.md
+    - References: references.md
+
+extra_css:
+    - css/termynal.css
+    - css/custom.css
+
+extra_javascript:
+    - js/termynal.js
+    - js/custom.js
