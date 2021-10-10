@@ -1,4 +1,4 @@
-site_name: Levy
+site_name: OpenMetaWrapper
 site_url: https://pmbrull.github.io/OpenMetaWrapper/
 site_description: Supercharge YAML configs with Jinja, types and custom functions.
 
@@ -8,7 +8,7 @@ theme:
         text: Poppins
         code: Poppins Mono
     palette:
-        primary: light blue
+        primary: purple
         accent: amber
     icon:
         repo: fontawesome/brands/github-alt

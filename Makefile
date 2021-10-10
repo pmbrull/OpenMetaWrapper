@@ -1,5 +1,8 @@
 TEST_DIR ?= tests
-PROJECT_DIR ?= openmeta-wrapper
+PROJECT_DIR ?= OpenMetaWrapper
+SOURCES_DIR ?= ${PROJECT_DIR}/sources
+GENERATED_DIR ?= ${PROJECT_DIR}/generated
+SOURCES_ROOT ?= "catalog-rest-service/src/main/resources/json"
 
 install:
 	@echo "Installing requirements..."
@@ -28,4 +31,24 @@ unit:
 	coverage run -m pytest --doctest-modules $(TEST_FOLDER)
 	coverage xml -i
 
-test_all: install install_test black_check lint unit
+get_sources:
+	@echo "Fetching source JSON Schema model from OpenMetadata standards..."
+	mkdir ${SOURCES_DIR}; \
+	cd ${SOURCES_DIR}; \
+	git init; \
+	git remote add sources git@github.com:open-metadata/OpenMetadata.git; \
+	git config core.sparsecheckout true; \
+	echo ${SOURCES_ROOT} >> .git/info/sparse-checkout; \
+	git pull sources main --depth 1
+
+generate:
+	@echo "Generating pydantic sources from OpenMetadata standards..."
+	datamodel-codegen --input "${SOURCES_DIR}/${SOURCES_ROOT}" --output ${GENERATED_DIR}  --input-file-type jsonschema
+
+clean_sources:
+	@echo "Cleaning JSON sources..."
+	rm -rf ${SOURCES_DIR}
+
+generate_all: get_sources generate clean_sources
+
+test_all: install black_check lint unit
