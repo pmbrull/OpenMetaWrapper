@@ -43,7 +43,7 @@ get_sources:
 
 generate:
 	@echo "Generating pydantic sources from OpenMetadata standards..."
-	datamodel-codegen --input "${SOURCES_DIR}/${SOURCES_ROOT}" --output ${GENERATED_DIR}  --input-file-type jsonschema
+	datamodel-codegen --input "${SOURCES_DIR}/${SOURCES_ROOT}" --output ${GENERATED_DIR}  --input-file-type jsonschema  --field-constraints
 
 clean_sources:
 	@echo "Cleaning JSON sources..."
