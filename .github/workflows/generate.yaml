@@ -13,7 +13,7 @@ jobs:
       - name: Commit sources
         run: |
           set -ex
-          changes=$(echo $(git log -1 --name-only --oneline) | grep "hello/random/path")
+          changes=$(echo $(git log -1 --name-only --oneline feature/wrapper) | grep "hello/random/path")
           if [[ -n "$changes" ]]; then
             make generate_all
             git config --global user.name 'generator'
