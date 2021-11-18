@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Commit sources
         run: |
+          set -ex
           changes=$(echo $(git log -1 --name-only --oneline) | grep "hello/random/path")
           if [[ -n "$changes" ]]; then
             make generate_all
