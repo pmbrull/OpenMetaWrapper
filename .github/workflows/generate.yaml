@@ -1,0 +1,22 @@
+name: Generate sources
+
+on:
+  push:
+    branches:
+      - feature/wrapper
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Commit sources
+        run: |
+          changes=$(echo $(git log -1 --name-only --oneline) | grep "hello/random/path")
+          if [[ -n "$changes" ]]; then
+            make generate
+            git config --global user.name 'generator'
+            git config --global user.email 'generator@users.noreply.github.com'
+            git commit -am "Automated generation"
+            git push
+          fi
