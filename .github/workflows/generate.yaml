@@ -15,7 +15,7 @@ jobs:
           set -ex
           changes=$(echo $(git log -1 --name-only --oneline origin/feature/wrapper) | grep "hello/random/path")
           if [[ -n "$changes" ]]; then
-            make generate_all
+            echo "hello" >> hello.txt
             git config --global user.name 'generator'
             git config --global user.email 'generator@users.noreply.github.com'
             git commit -am "Automated generation"
