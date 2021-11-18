@@ -4,23 +4,20 @@ on:
   push:
     branches:
       - feature/wrapper
+    paths:
+      - 'hello/random/path/**'
 
 jobs:
   report:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Logging
-        run: echo "${{toJSON(github.event)}}"
       - name: Commit sources
         run: |
           set -ex
-          changes=$(echo $(git log -1 --name-only --oneline origin/feature/wrapper) | grep "hello/random/path")
-          if [[ -n "$changes" ]]; then
-            echo "hello" >> hello.txt
-            git config --global user.name 'generator'
-            git config --global user.email 'generator@users.noreply.github.com'
-            git add -A
-            git commit -m "Automated generation"
-            git push
-          fi
+          echo "hello" >> hello.txt
+          git config --global user.name 'generator'
+          git config --global user.email 'generator@users.noreply.github.com'
+          git add -A
+          git commit -m "Automated generation"
+          git push
