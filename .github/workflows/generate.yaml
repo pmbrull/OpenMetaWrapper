@@ -14,6 +14,7 @@ jobs:
         run: |
           set -ex
           changes=$(echo $(git log -1 --name-only --oneline feature/wrapper) | grep "hello/random/path")
+          echo $changes
           if [[ -n "$changes" ]]; then
             make generate_all
             git config --global user.name 'generator'
