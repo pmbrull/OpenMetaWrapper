@@ -1,0 +1,3 @@
+[submodule "py-config"]
+	path = py-config
+	url = git@github.com:pmbrull/py-config.git
